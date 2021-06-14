@@ -33,3 +33,10 @@ Scenario: Cadastro de aluno com CPF duplicado.
     Then Eu vejo uma mensagem de erro dizendo "CPF duplicado"
     And Ainda estou na página "Cadastrar Aluno"
     And O aluno com CPF "828.585.977-07" está na lista de alunos cadastrados.
+
+Scenario: Cadastro de aluno sucesso (SERVIÇO)
+    Given Eu estou logado como "Professor".
+    And O aluno com CPF "828.585.977-07" não está armazenado no sistema.
+    When Eu solicito ao sistema o cadastro do aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsd@cin.ufpe.br"
+    Then O sistema retorna uma mensagem de sucesso.
+    And O aluno com CPF "828.585.977-07" está armazenado no sistema.
