@@ -43,8 +43,8 @@ Scenario: Cadastro de aluno sucesso (SERVIÇO)
     And O aluno com CPF "828.585.977-07" está armazenado no sistema.
 
 Scenario: Cadastro de aluno erro de autenticação (SERVIÇO)
-    Given Eu estou logado como “Aluno”.
-    And O aluno com CPF “828.585.977-07” não está armazenado no sistema.
-    When Eu solicito ao sistema o cadastro do aluno com CPF “828.585.977-07”, nome “João Pedro Henrique” e email “jphsd@cin.ufpe.br”
-    Then O sistema retorna uma mensagem de erro dizendo “Permissão insuficiente”.
-    And O aluno com CPF “828.585.977-07” não está armazenado no sistema.
+    Given Eu estou logado como "Aluno".
+    And O aluno com CPF "828.585.977-07" não está armazenado no sistema.
+    When Eu solicito ao sistema o cadastro do aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsd@cin.ufpe.br"
+    Then O sistema retorna uma mensagem de erro dizendo "Permissão insuficiente".
+    And O aluno com CPF "828.585.977-07" não está armazenado no sistema.
