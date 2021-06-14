@@ -1,35 +1,39 @@
-Scenario: Cadastro de aluno sucesso.
-    Given Eu estou logado como "Professor".
-    And Eu estou na página "Cadastrar Aluno"
-    And O aluno com CPF "828.585.977-07" não está na lista de alunos cadastrados.
-    When Eu cadastro o aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsd@cin.ufpe.br"
-    Then Eu vejo uma mensagem de confirmação.
-    And Ainda estou na página "Cadastrar Aluno"
-    And O aluno com CPF "828.585.977-07" está na lista de alunos cadastrados.
+Scenario: Atualização de aluno com sucesso.
+GIVEN  Eu estou logado como “Professor”.
+AND  Eu estou na página “Lista de Alunos”.
+AND Vejo que o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr@cin.ufpe.br".
+WHEN Eu modifico o email de "Eduardo" para "ejdr2@cin.ufpe.br"
+THEN Eu vejo uma mensagem de confirmação.
+AND  Ainda estou na página “Lista de Alunos”
+AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr2@cin.ufpe.br".
 
-Scenario: Cadastro de aluno com CPF inválido.
-    Given Eu estou logado como "Professor".
-    And Eu estou na página "Cadastrar Aluno"
-    And O aluno com CPF "123.456.789-00" não está na lista de alunos cadastrados.
-    When Eu cadastro o aluno com CPF "123.456.789-00", nome "João Pedro Henrique" e email "jphsd@cin.ufpe.br"
-    Then Eu vejo uma mensagem de erro dizendo "CPF inválido"
-    And Ainda estou na página "Cadastrar Aluno"
-    And O aluno com CPF "123.456.789-00" não está na lista de alunos cadastrados.
+Scenario: Tentativa falha de atualização por motivo de CPF duplicado.
+GIVEN  Eu estou logado como “Professor”.
+AND  Eu estou na página “Lista de Alunos”.
+AND Vejo que o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr@cin.ufpe.br".
+AND Vejo que o aluno ''João'' tem CPF "828.585.977-10'' e email "joao@cin.ufpe.br".
+WHEN Eu tento modificar o CPF de "Eduardo" para "828.585.977-10".
+THEN Eu vejo uma mensagem de erro informando que o CPF está duplicado.
+AND  Ainda estou na página “Lista de Alunos”
+AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr2@cin.ufpe.br".
+AND Vejo que o aluno ''João'' tem CPF "828.585.977-10'' e email "joao@cin.ufpe.br".
 
-Scenario: Cadastro de aluno com email inválido.
-    Given Eu estou logado como "Professor".
-    And Eu estou na página "Cadastrar Aluno"
-    And O aluno com CPF "828.585.977-07" não está na lista de alunos cadastrados.
-    When Eu cadastro o aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsdcin.ufpe.br"
-    Then Eu vejo uma mensagem de erro dizendo "Email inválido"
-    And Ainda estou na página "Cadastrar Aluno"
-    And O aluno com CPF "828.585.977-07" não está na lista de alunos cadastrados.
 
-Scenario: Cadastro de aluno com CPF duplicado.
-    Given Eu estou logado como "Professor".
-    And Eu estou na página "Cadastrar Aluno"
-    And O aluno com CPF "828.585.977-07" está na lista de alunos cadastrados.
-    When Eu cadastro o aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsd@cin.ufpe.br"
-    Then Eu vejo uma mensagem de erro dizendo "CPF duplicado"
-    And Ainda estou na página "Cadastrar Aluno"
-    And O aluno com CPF "828.585.977-07" está na lista de alunos cadastrados.
+Scenario: Tentativa falha de atualização por motivo de CPF inválido.
+GIVEN  Eu estou logado como “Professor”.
+AND  Eu estou na página “Lista de Alunos”.
+AND Vejo que o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email 
+WHEN Eu tento modificar o CPF de "Eduardo" para "0800".
+THEN Eu vejo uma mensagem de erro informando que o CPF em questão é inválido.
+AND  Ainda estou na página “Lista de Alunos”
+AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr2@cin.ufpe.br".
+
+
+Scenario: Tentativa falha de atualização por motivo de campos não preenchidos.
+GIVEN  Eu estou logado como “Professor”.
+AND  Eu estou na página “Lista de Alunos”.
+AND Vejo que o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email 
+WHEN Eu tento modificar o CPF de "Eduardo" para "095.585.977-09" e apago o que está escrito no campo email.
+THEN Eu vejo uma mensagem de erro informando que a atualização não pode ser realizada enquanto há campos a serem preenchidos.
+AND  Ainda estou na página “Lista de Alunos”
+AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr2@cin.ufpe.br" .
