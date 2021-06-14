@@ -33,3 +33,4 @@ Scenario: Cadastro de aluno com CPF duplicado.
     Then Eu vejo uma mensagem de erro dizendo "CPF duplicado"
     And Ainda estou na página "Cadastrar Aluno"
     And O aluno com CPF "828.585.977-07" está na lista de alunos cadastrados.
+    And Eu estou logado como "Professor"
