@@ -20,7 +20,7 @@ Scenario: Cadastro de aluno com email inválido.
     Given Eu estou logado como "Professor".
     And Eu estou na página "Cadastrar Aluno"
     And O aluno com CPF "828.585.977-07" não está na lista de alunos cadastrados.
-    When Eu cadastro o aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsdcin.ufpe.br"
+    When Eu cadastro o aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsd@cin.ufpe.br"
     Then Eu vejo uma mensagem de erro dizendo "Email inválido"
     And Ainda estou na página "Cadastrar Aluno"
     And O aluno com CPF "828.585.977-07" não está na lista de alunos cadastrados.
