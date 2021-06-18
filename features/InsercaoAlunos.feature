@@ -35,7 +35,7 @@ Scenario: Cadastro de aluno com CPF duplicado.
     And O aluno com CPF "828.585.977-07" está na lista de alunos cadastrados.
     And Eu estou logado como "Professor"
 
-Scenario: Cadastro de aluno sucesso (SERVIÇO)
+Scenario: Cadastro de aluno sucesso (Serviço)
     Given Eu estou logado como "Professor".
     And O aluno com CPF "828.585.977-07" não está armazenado no sistema.
     When Eu solicito ao sistema o cadastro do aluno com CPF "828.585.977-07", nome "João Pedro Henrique" e email "jphsd@cin.ufpe.br"
