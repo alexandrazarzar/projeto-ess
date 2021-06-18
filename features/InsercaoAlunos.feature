@@ -25,7 +25,7 @@ Scenario: Cadastro de aluno com email inválido.
     And Ainda estou na página "Cadastrar Aluno"
     And O aluno com CPF "828.585.977-07" não está na lista de alunos cadastrados.
 
-Scenario: Cadastro de aluno com CPF duplicado.
+Scenario: Cadastro de aluno com CPF duplicado
     Given Eu estou logado como "Professor".
     And Eu estou na página "Cadastrar Aluno"
     And O aluno com CPF "828.585.977-07" está na lista de alunos cadastrados.
