@@ -57,3 +57,12 @@ THEN Eu vejo uma mensagem de erro informando que o email em questão é inválid
 AND  Ainda estou na página “Lista de Alunos”
 AND  Vejo que  o aluno ''Eduardo'' tem email "ejdr2@cin.ufpe.br".
 AND  Vejo que o CPF de Eduardo continua o mesmo.
+
+Scenario: Atualização de aluno com sucesso.
+GIVEN  Eu estou logado como “Professor”.
+AND  Eu estou na página “Lista de Alunos”.
+AND Vejo que o aluno ''David'' tem CPF "828.585.977-10'' e email "david@cin.ufpe.br".
+WHEN Eu modifico o CPF de "David" para "828.585.977-09''
+THEN Eu vejo uma mensagem de confirmação.
+AND  Ainda estou na página “Lista de Alunos”
+AND  Vejo que  o aluno ''David'' tem CPF "828.585.977-09'' e email "david@cin.ufpe.br".
