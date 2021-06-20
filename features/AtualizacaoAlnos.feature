@@ -56,3 +56,4 @@ WHEN Eu tento modificar o email de "Eduardo" para "ejdr2@".
 THEN Eu vejo uma mensagem de erro informando que o email em questão é inválido.
 AND  Ainda estou na página “Lista de Alunos”
 AND  Vejo que  o aluno ''Eduardo'' tem email "ejdr2@cin.ufpe.br".
+AND  Vejo que o CPF de Eduardo continua o mesmo.
