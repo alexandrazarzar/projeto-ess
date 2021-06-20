@@ -71,8 +71,9 @@ AND  Vejo que  o aluno ''David'' tem CPF "828.585.977-09'' e email "david@cin.uf
 Scenario: Tentativa falha de atualização por motivo de campos não preenchidos. (Exemplo 2)
 GIVEN  Eu estou logado como “Professor”.
 AND  Eu estou na página “Lista de Alunos”.
-AND Vejo que o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email ejdr2@cin.ufpe.br
+AND Vejo que o aluno ''Eduardo'' tem CPF "828.585.977-20'' e email ejdr2@cin.ufpe.br
 WHEN Eu tento modificar o email de "Eduardo" para "eduzinho@cin" e apago o que está escrito no campo CPF.
 THEN Eu vejo uma mensagem de erro informando que a atualização não pode ser realizada enquanto há campos a serem preenchidos.
 AND  Ainda estou na página “Lista de Alunos”
-AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr2@cin.ufpe.br".
+AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-20'' e email "ejdr2@cin.ufpe.br".
+
