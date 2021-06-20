@@ -58,6 +58,7 @@ AND  Ainda estou na página “Lista de Alunos”
 AND  Vejo que  o aluno ''Eduardo'' tem email "ejdr2@cin.ufpe.br".
 AND  Vejo que o CPF de Eduardo continua o mesmo.
 
+
 Scenario: Atualização de aluno com sucesso.
 GIVEN  Eu estou logado como “Professor”.
 AND  Eu estou na página “Lista de Alunos”.
