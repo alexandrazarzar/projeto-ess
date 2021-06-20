@@ -7,6 +7,7 @@ THEN Eu vejo uma mensagem de confirmação.
 AND  Ainda estou na página “Lista de Alunos”
 AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr2@cin.ufpe.br".
 
+
 Scenario: Tentativa falha de atualização por motivo de CPF duplicado.
 GIVEN  Eu estou logado como “Professor”.
 AND  Eu estou na página “Lista de Alunos”.
