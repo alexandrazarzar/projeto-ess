@@ -57,3 +57,22 @@ THEN Eu vejo uma mensagem de erro informando que o email em questão é inválid
 AND  Ainda estou na página “Lista de Alunos”
 AND  Vejo que  o aluno ''Eduardo'' tem email "ejdr2@cin.ufpe.br".
 AND  Vejo que o CPF de Eduardo continua o mesmo.
+
+Scenario: Atualização de aluno com sucesso.
+GIVEN  Eu estou logado como “Professor”.
+AND  Eu estou na página “Lista de Alunos”.
+AND Vejo que o aluno ''David'' tem CPF "828.585.977-10'' e email "david@cin.ufpe.br".
+WHEN Eu modifico o CPF de "David" para "828.585.977-09''
+THEN Eu vejo uma mensagem de confirmação.
+AND  Ainda estou na página “Lista de Alunos”
+AND  Vejo que  o aluno ''David'' tem CPF "828.585.977-09'' e email "david@cin.ufpe.br".
+
+Scenario: Tentativa falha de atualização por motivo de campos não preenchidos. (Exemplo 2)
+GIVEN  Eu estou logado como “Professor”.
+AND  Eu estou na página “Lista de Alunos”.
+AND Vejo que o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email ejdr2@cin.ufpe.br
+WHEN Eu tento modificar o email de "Eduardo" para "eduzinho@cin" e apago o que está escrito no campo CPF.
+THEN Eu vejo uma mensagem de erro informando que a atualização não pode ser realizada enquanto há campos a serem preenchidos.
+AND  Ainda estou na página “Lista de Alunos”
+AND  Vejo que  o aluno ''Eduardo'' tem CPF "828.585.977-09'' e email "ejdr2@cin.ufpe.br".
+
